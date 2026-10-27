@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Radar de Pagamentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <h1>Radar de pagamentos</h1>
+      <p>Notícias de adquirentes, subadquirentes, gateways e carteiras digitais no Brasil, mais o que move o setor: Pix, regulação, maquininhas e recebíveis.</p>
+    </div>
+    <div class="actions">
+      <label for="period" class="hint" style="margin:0">Período</label>
+      <select id="period">
+        <option value="1">Últimas 24 horas</option>
+        <option value="7" selected>Últimos 7 dias</option>
+        <option value="30">Últimos 30 dias</option>
+      </select>
+      <button class="btn primary" id="refresh">Atualizar</button>
+      <button class="btn" id="export">Exportar CSV</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <div class="panel">
+        <h2>Empresas</h2>
+        <p class="hint">Clique para filtrar. Dá para combinar várias.</p>
+        <div class="co-list" id="coList"></div>
+        <form class="add" id="addForm">
+          <input id="addInput" placeholder="Adicionar empresa (ex.: Ame Digital)" aria-label="Nome da empresa para monitorar">
+          <button class="btn" type="submit">Adicionar</button>
+        </form>
+        <button class="clear" id="clearFilters" type="button" hidden>Limpar filtros</button>
+      </div>
+    </aside>
+
+    <main>
+      <div class="toolbar">
+        <input class="search" id="search" type="search" placeholder="Buscar nos títulos (ex.: Pix Automático, lucro, aquisição)" aria-label="Buscar nos títulos">
+        <select id="sort" aria-label="Ordenar">
+          <option value="new">Mais recentes primeiro</option>
+          <option value="old">Mais antigas primeiro</option>
+        </select>
+      </div>
+      <div class="chips" id="cats"></div>
+      <p class="status" id="status" role="status"></p>
+      <div class="progress" id="progress"><i></i></div>
+      <div id="list"></div>
+      <p class="foot">As notícias vêm do Google Notícias (busca em português, edição Brasil) e passam por um proxy público para contornar o bloqueio de CORS do navegador. Cada item leva à matéria original; o app guarda só título, fonte, data e link.</p>
+    </main>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
